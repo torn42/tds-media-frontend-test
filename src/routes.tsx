@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router';
+import { createBrowserRouter, Navigate } from 'react-router';
 import { DefaultLayout } from './components/layout/DefaultLayout';
 import { UserList } from './pages/UserList';
 import { UserCreate } from './pages/UserCreate';
@@ -17,4 +17,5 @@ export const router = createBrowserRouter([
       { path: '/update/:id', element: <UserUpdate /> },
     ],
   },
+  { path: '*', element: <Navigate to="/" replace /> },
 ]);
