@@ -7,11 +7,21 @@ import { UserTable } from '../components/users/UserTable';
 import { NavLink } from 'react-router';
 
 export const UserList = () => {
-  const { users, getUsers } = useUsers();
+  const { users, getUsers, isLoading, error } = useUsers();
 
   useEffect(() => {
     getUsers();
   }, [getUsers]);
+
+  if (isLoading)
+    return <div className="py-6 text-xl">Загрузка списка пользователей.</div>;
+
+  if (error)
+    return (
+      <div className="py-2 px-4 bg-red-200 border-2 border-red-400 rounded-md">
+        {error}
+      </div>
+    );
 
   return (
     <div className="mx-auto h-full">
